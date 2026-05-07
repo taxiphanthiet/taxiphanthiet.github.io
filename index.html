@@ -7,136 +7,236 @@
     <!-- Xác minh Google Search Console -->
     <meta name="google-site-verification" content="F3YX4muJcd-JJNqF_wDPegCh6_KH16GshQlYw7DbUP4" />
 
-    <!-- SEO Basic -->
-    <title>Xe Đưa Đón Ga Bình Thuận & Phan Thiết 4-7 Chỗ | Đúng Giờ 0934128702</title>
-    <meta name="description" content="Dịch vụ xe đưa đón tận nơi tại Ga Bình Thuận và Ga Phan Thiết. Xe 4/7 chỗ đời mới, cam kết đúng giờ, giá rẻ. Liên hệ ngay Zalo: 0934128702.">
-    <meta name="keywords" content="xe đưa đón ga bình thuận, xe ga phan thiết, đặt xe phan thiết, taxi ga bình thuận, xe 7 chỗ phan thiết, 0934128702">
-    
-    <!-- Open Graph (Hiển thị khi chia sẻ lên Facebook/Zalo) -->
-    <meta property="og:title" content="Xe Đưa Đón Ga Bình Thuận & Phan Thiết - Đúng Giờ, Tận Tâm">
-    <meta property="og:description" content="Xe 4/7 chỗ đời mới phục vụ 24/7 tại Ga Bình Thuận & Phan Thiết. Gọi ngay 0934128702.">
-    <meta property="og:type" content="website">
+    <!-- SEO Meta Tags -->
+    <title>Xe Đưa Đón Ga Phan Thiết & Ga Bình Thuận 4-7 Chỗ | Uy Tín, Đúng Giờ</title>
+    <meta name="description" content="Dịch vụ xe riêng đưa đón tận nơi tại Ga Phan Thiết và Ga Bình Thuận về Mũi Né, Tiến Thành. Xe 4 chỗ, 7 chỗ đời mới, tài xế bản địa thân thiện. Liên hệ ngay: 0934128702.">
+    <meta name="keywords" content="xe đưa đón ga phan thiết, xe ga bình thuận, taxi ga bình thuận, xe phan thiết mũi né, thuê xe 7 chỗ phan thiết, xe đưa đón ga mương mán">
+    <link rel="canonical" href="https://yourusername.github.io/your-repo/">
 
-    <!-- Schema.org (Dữ liệu cấu trúc giúp Google hiểu dịch vụ) -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "TaxiService",
-      "name": "Dịch Vụ Xe Đưa Đón Ga Bình Thuận - Phan Thiết",
-      "description": "Chuyên xe đưa đón khách tại các ga tàu hỏa Bình Thuận và Phan Thiết về trung tâm hoặc Mũi Né.",
-      "provider": {
-        "@type": "LocalBusiness",
-        "name": "Vận Tải Phan Thiết",
-        "telephone": "+84934128702",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Phan Thiết",
-          "addressRegion": "Bình Thuận",
-          "addressCountry": "VN"
-        }
-      },
-      "areaServed": ["Phan Thiết", "Bình Thuận", "Mũi Né"]
-    }
-    </script>
+    <!-- Social Media Meta (Open Graph) -->
+    <meta property="og:title" content="Xe Đưa Đón Ga Phan Thiết & Bình Thuận - Phục Vụ 24/7">
+    <meta property="og:description" content="Xe riêng đời mới đón tận cổng ga. Giá cả cạnh tranh, không phát sinh chi phí.">
+    <meta property="og:type" content="website">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap');
         body { font-family: 'Lexend', sans-serif; scroll-behavior: smooth; }
+        
         .hero-gradient {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=1350&q=80');
+            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), url('https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&q=80&w=1600');
             background-size: cover; background-position: center;
         }
-        .pulse-button { animation: pulse 2s infinite; }
-        @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-            70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
         }
+
+        .service-card { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .service-card:hover { transform: translateY(-8px); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1); }
+
+        .btn-animate { transition: all 0.3s ease; }
+        .btn-animate:hover { transform: translateY(-2px); box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.4); }
+
+        .lang-flag { cursor: pointer; transition: all 0.3s; opacity: 0.5; border: 2px solid transparent; }
+        .lang-flag.active { opacity: 1; transform: scale(1.1); border-color: #2563eb; }
+        
+        .section-dot { width: 8px; height: 8px; background: #2563eb; border-radius: 50%; display: inline-block; margin-bottom: 4px; }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-900">
+<body class="bg-white text-slate-900 leading-relaxed">
 
-    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 flex justify-between h-16 items-center">
-            <div class="flex items-center gap-2">
-                <i class="fas fa-car-side text-blue-600 text-2xl"></i>
-                <span class="font-bold text-xl tracking-tight text-blue-800">Xe Ga Phan Thiết</span>
-            </div>
-            <a href="tel:0934128702" class="bg-blue-600 text-white px-4 py-2 rounded-full font-semibold flex items-center gap-2 hover:bg-blue-700 transition">
-                <i class="fas fa-phone-alt"></i> 0934128702
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 md:px-8 h-20 flex justify-between items-center">
+            <a href="#" class="flex items-center gap-3">
+                <div class="bg-blue-600 p-2 rounded-xl text-white shadow-lg shadow-blue-600/30">
+                    <i class="fas fa-car-side text-xl"></i>
+                </div>
+                <div>
+                    <span class="font-bold text-xl block leading-none text-slate-900" data-vi="Xe Ga Phan Thiết" data-en="Phan Thiet Station Car">Xe Ga Phan Thiết</span>
+                    <span class="text-[10px] text-blue-600 font-bold tracking-[0.2em] uppercase" data-vi="Chuyên Nghiệp • Tận Tâm" data-en="Professional • Dedicated">Chuyên Nghiệp • Tận Tâm</span>
+                </div>
             </a>
+            
+            <div class="flex items-center gap-4">
+                <div class="flex gap-2 bg-slate-100 p-1.5 rounded-full">
+                    <img src="https://flagcdn.com/w40/vn.png" alt="VN" class="lang-flag w-7 h-5 active rounded" onclick="changeLang('vi')" id="flag-vi">
+                    <img src="https://flagcdn.com/w40/us.png" alt="US" class="lang-flag w-7 h-5 rounded" onclick="changeLang('en')" id="flag-en">
+                </div>
+            </div>
         </div>
     </nav>
 
-    <section class="hero-gradient h-screen flex items-center justify-center text-center px-4">
-        <div class="max-w-4xl">
-            <div class="inline-block bg-blue-600/30 backdrop-blur-sm text-blue-200 px-4 py-1 rounded-full text-sm font-bold mb-4">DỊCH VỤ XE 4/7 CHỖ UY TÍN</div>
-            <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">
-                Xe Đưa Đón <br> <span class="text-blue-400">Ga Bình Thuận & Ga Phan Thiết</span>
-            </h1>
-            <p class="text-lg text-gray-200 mb-10 max-w-2xl mx-auto italic">
-                "Luôn đúng giờ - Tài xế thân thiện - Phục vụ 24/7"
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="https://zalo.me/0934128702" target="_blank" class="bg-green-500 text-white px-8 py-4 rounded-xl font-bold text-lg pulse-button flex items-center justify-center gap-2">
-                    <i class="fab fa-whatsapp text-2xl"></i> Nhắn Zalo Đặt Xe
-                </a>
-                <a href="tel:0934128702" class="bg-white text-slate-900 px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 border-2 border-transparent hover:border-blue-600 transition">
-                    <i class="fas fa-phone-alt text-blue-600"></i> Gọi 0934.128.702
-                </a>
+    <!-- Hero Section -->
+    <section class="hero-gradient min-h-screen flex items-center pt-20 px-4">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="text-left">
+                <div class="inline-flex items-center gap-2 bg-blue-500/10 text-blue-300 px-4 py-2 rounded-full text-xs font-bold mb-6 border border-blue-500/20">
+                    <span class="section-dot"></span>
+                    <span data-vi="PHỤC VỤ 24/7 TẠI CÁC GA TÀU" data-en="AVAILABLE 24/7 AT STATIONS">PHỤC VỤ 24/7 TẠI CÁC GA TÀU</span>
+                </div>
+                <h2 class="text-4xl md:text-7xl font-extrabold text-white mb-6 leading-[1.1]">
+                    <span data-vi="Đưa Đón" data-en="Private">Đưa Đón</span> <br>
+                    <span class="text-blue-500" data-vi="An Toàn & Đúng Giờ" data-en="Safe & On Time">An Toàn & Đúng Giờ</span>
+                </h2>
+                <p class="text-lg text-slate-400 mb-10 max-w-xl" data-vi="Trải nghiệm dịch vụ xe riêng cao cấp từ Ga Phan Thiết, Ga Bình Thuận về trung tâm hoặc Mũi Né. Không lo chờ đợi, giá cả minh bạch." data-en="Experience premium private car service from Phan Thiet and Binh Thuan stations. No waiting, transparent pricing, and local expertise.">
+                    Trải nghiệm dịch vụ xe riêng cao cấp từ Ga Phan Thiết, Ga Bình Thuận về trung tâm hoặc Mũi Né. Không lo chờ đợi, giá cả minh bạch.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="tel:0934128702" class="btn-animate bg-blue-600 text-white px-10 py-5 rounded-2xl font-bold text-lg flex items-center justify-center gap-3">
+                        <i class="fas fa-phone-alt"></i> <span data-vi="Liên Hệ Đặt Xe" data-en="Book A Ride Now">Liên Hệ Đặt Xe</span>
+                    </a>
+                    <div class="flex gap-3">
+                        <a href="https://zalo.me/0934128702" class="btn-animate bg-white/10 backdrop-blur text-white px-6 py-5 rounded-2xl font-bold border border-white/20 flex-1 flex items-center justify-center gap-2">
+                            <img src="https://img.icons8.com/color/48/zalo.png" class="w-6 h-6" alt="Zalo"> Zalo
+                        </a>
+                        <a href="https://wa.me/84934128702" class="btn-animate bg-green-500 text-white px-6 py-5 rounded-2xl font-bold flex-1 flex items-center justify-center gap-2">
+                            <i class="fab fa-whatsapp text-2xl"></i> WA
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hidden lg:block relative">
+                <div class="absolute -inset-4 bg-blue-600/20 rounded-full blur-3xl"></div>
+                <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&q=80&w=800" alt="Xe đời mới" class="relative rounded-[2.5rem] shadow-2xl border border-white/10">
             </div>
         </div>
     </section>
 
-    <!-- Cam kết dịch vụ -->
-    <section class="py-16 bg-white">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="text-center p-6">
-                    <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-blue-600 text-2xl">
-                        <i class="fas fa-user-clock"></i>
-                    </div>
-                    <h3 class="font-bold text-xl mb-2">Đón Tại Ga</h3>
-                    <p class="text-slate-600 italic">Theo dõi sát sao lịch tàu chạy, đón quý khách ngay tại cổng ra.</p>
+    <!-- Services Section -->
+    <section class="py-24 max-w-7xl mx-auto px-4">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+            <div class="max-w-2xl">
+                <h2 class="text-3xl md:text-5xl font-bold text-slate-900 mb-4" data-vi="Dịch Vụ Chuyên Nghiệp" data-en="Our Professional Services">Dịch Vụ Chuyên Nghiệp</h2>
+                <p class="text-slate-500 text-lg" data-vi="Chúng tôi tập trung vào sự thoải mái và an toàn của khách hàng trên mỗi hành trình." data-en="We focus on your comfort and safety throughout every journey.">Chúng tôi tập trung vào sự thoải mái và an toàn của khách hàng trên mỗi hành trình.</p>
+            </div>
+            <a href="tel:0934128702" class="text-blue-600 font-bold flex items-center gap-2 hover:underline">
+                <span data-vi="Tư vấn trực tiếp" data-en="Get a quote">Tư vấn trực tiếp</span> <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="service-card bg-slate-50 p-10 rounded-[2rem]">
+                <div class="bg-white w-14 h-14 rounded-2xl flex items-center justify-center text-blue-600 shadow-sm mb-8">
+                    <i class="fas fa-map-marked-alt text-xl"></i>
                 </div>
-                <div class="text-center p-6">
-                    <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-blue-600 text-2xl">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3 class="font-bold text-xl mb-2">An Toàn Tuyệt Đối</h3>
-                    <p class="text-slate-600 italic">Lái xe giàu kinh nghiệm, xe đời mới 4 chỗ, 7 chỗ sạch sẽ.</p>
+                <h3 class="text-xl font-bold mb-4" data-vi="Đón Tiễn Tại Ga" data-en="Station Transfer">Đón Tiễn Tại Ga</h3>
+                <p class="text-slate-500 mb-6" data-vi="Đưa đón từ Ga Phan Thiết, Ga Bình Thuận về mọi ngõ ngách trong thành phố và các khu du lịch." data-en="Transfers from Phan Thiet and Binh Thuan stations to any destination in the city and resorts.">Đưa đón từ Ga Phan Thiết, Ga Bình Thuận về mọi ngõ ngách trong thành phố và các khu du lịch.</p>
+            </div>
+
+            <div class="service-card bg-slate-50 p-10 rounded-[2rem]">
+                <div class="bg-white w-14 h-14 rounded-2xl flex items-center justify-center text-blue-600 shadow-sm mb-8">
+                    <i class="fas fa-hotel text-xl"></i>
                 </div>
-                <div class="text-center p-6">
-                    <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-blue-600 text-2xl">
-                        <i class="fas fa-money-bill-wave"></i>
+                <h3 class="text-xl font-bold mb-4" data-vi="Về Mũi Né - Tiến Thành" data-en="Mui Ne - Tien Thanh">Về Mũi Né - Tiến Thành</h3>
+                <p class="text-slate-500 mb-6" data-vi="Dịch vụ chuyên biệt đưa đón khách du lịch về các Resort ven biển nhanh chóng và tiện lợi." data-en="Specialized service for tourists traveling to seaside resorts quickly and conveniently.">Dịch vụ chuyên biệt đưa đón khách du lịch về các Resort ven biển nhanh chóng và tiện lợi.</p>
+            </div>
+
+            <div class="service-card bg-slate-50 p-10 rounded-[2rem]">
+                <div class="bg-white w-14 h-14 rounded-2xl flex items-center justify-center text-blue-600 shadow-sm mb-8">
+                    <i class="fas fa-calendar-check text-xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-4" data-vi="Đặt Lịch Trước" data-en="Pre-booking">Đặt Lịch Trước</h3>
+                <p class="text-slate-500 mb-6" data-vi="Đặt xe dễ dàng qua Zalo/WhatsApp. Chúng tôi cam kết giữ xe và đón đúng giờ tàu đến." data-en="Easy booking via Zalo/WhatsApp. We guarantee vehicle availability and on-time pickup.">Đặt xe dễ dàng qua Zalo/WhatsApp. Chúng tôi cam kết giữ xe và đón đúng giờ tàu đến.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fleet / Trust -->
+    <section class="py-20 bg-slate-950 text-white">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <div>
+                <h2 class="text-4xl font-bold mb-8" data-vi="Dòng Xe Đời Mới, Sạch Sẽ" data-en="Modern & Clean Fleet">Dòng Xe Đời Mới, Sạch Sẽ</h2>
+                <div class="space-y-6">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-blue-600/20 flex items-center justify-center text-blue-500">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <p class="text-lg text-slate-300" data-vi="Xe 4 chỗ: Vios, Accent, City..." data-en="4 Seater: Vios, Accent, City...">Xe 4 chỗ: Vios, Accent, City...</p>
                     </div>
-                    <h3 class="font-bold text-xl mb-2">Giá Tốt Nhất</h3>
-                    <p class="text-slate-600 italic">Giá cả công khai, không phát sinh chi phí, rẻ hơn taxi truyền thống.</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-blue-600/20 flex items-center justify-center text-blue-500">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <p class="text-lg text-slate-300" data-vi="Xe 7 chỗ: Xpander, Innova, Veloz..." data-en="7 Seater: Xpander, Innova, Veloz...">Xe 7 chỗ: Xpander, Innova, Veloz...</p>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-blue-600/20 flex items-center justify-center text-blue-500">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <p class="text-lg text-slate-300" data-vi="Không mùi thuốc lá, máy lạnh hoạt động tốt" data-en="No smoking, powerful air conditioning">Không mùi thuốc lá, máy lạnh hoạt động tốt</p>
+                    </div>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="bg-white/5 p-8 rounded-3xl text-center">
+                    <p class="text-4xl font-bold text-blue-500 mb-2">100%</p>
+                    <p class="text-sm text-slate-400" data-vi="Đúng Giờ" data-en="On Time">Đúng Giờ</p>
+                </div>
+                <div class="bg-white/5 p-8 rounded-3xl text-center">
+                    <p class="text-4xl font-bold text-blue-500 mb-2">24/7</p>
+                    <p class="text-sm text-slate-400" data-vi="Phục Vụ" data-en="Service">Phục Vụ</p>
+                </div>
+                <div class="bg-white/5 p-8 rounded-3xl text-center col-span-2">
+                    <p class="text-4xl font-bold text-blue-500 mb-2">5.0 ⭐</p>
+                    <p class="text-sm text-slate-400" data-vi="Đánh giá từ khách hàng" data-en="Customer Ratings">Đánh giá từ khách hàng</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="bg-slate-900 text-white py-12 text-center border-t-4 border-blue-600">
+    <!-- Footer -->
+    <footer class="bg-white pt-24 pb-12 text-center">
         <div class="max-w-4xl mx-auto px-4">
-            <h2 class="text-2xl font-bold mb-6">Liên Hệ Đặt Xe Đưa Đón</h2>
-            <p class="text-3xl font-black text-blue-400 mb-4 tracking-wider">0934.128.702</p>
-            <p class="text-slate-400 mb-8 italic">Phục vụ đưa đón Ga Phan Thiết - Ga Bình Thuận - Mũi Né - Tiến Thành 24/7</p>
-            <div class="flex justify-center gap-6">
-                <a href="tel:0934128702" class="text-white hover:text-blue-400 text-2xl"><i class="fas fa-phone"></i></a>
-                <a href="https://zalo.me/0934128702" class="text-white hover:text-green-400 text-2xl"><i class="fab fa-whatsapp"></i></a>
+            <h3 class="text-3xl font-bold mb-8" data-vi="Bạn Cần Xe Ngay Lúc Này?" data-en="Need A Ride Right Now?">Bạn Cần Xe Ngay Lúc Này?</h3>
+            <div class="inline-flex flex-col gap-2 mb-12">
+                <span class="text-slate-400 text-sm font-bold uppercase tracking-widest" data-vi="Hotline đặt xe" data-en="Booking Hotline">Hotline đặt xe</span>
+                <a href="tel:0934128702" class="text-5xl md:text-6xl font-black text-slate-900 hover:text-blue-600 transition tracking-tighter">0934.128.702</a>
             </div>
+            
+            <div class="flex justify-center gap-6 mb-12">
+                <a href="https://zalo.me/0934128702" class="w-14 h-14 bg-slate-100 rounded-2xl flex items-center justify-center text-blue-600 hover:bg-blue-600 hover:text-white transition">
+                    <i class="fas fa-comment-dots text-2xl"></i>
+                </a>
+                <a href="https://wa.me/84934128702" class="w-14 h-14 bg-slate-100 rounded-2xl flex items-center justify-center text-green-600 hover:bg-green-600 hover:text-white transition">
+                    <i class="fab fa-whatsapp text-2xl"></i>
+                </a>
+            </div>
+            
+            <p class="text-slate-400 text-sm" data-vi="© 2024 Xe Ga Phan Thiết. Dịch vụ vận tải uy tín tại Bình Thuận." data-en="© 2024 Phan Thiet Station Car. Reliable transport in Binh Thuan.">© 2024 Xe Ga Phan Thiết. Dịch vụ vận tải uy tín tại Bình Thuận.</p>
         </div>
     </footer>
 
-    <!-- Mobile Button -->
-    <div class="fixed bottom-6 right-6 z-50">
-        <a href="tel:0934128702" class="bg-blue-600 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-2xl pulse-button">
-            <i class="fas fa-phone-alt text-2xl"></i>
-        </a>
+    <!-- Fixed Mobile Bar -->
+    <div class="fixed bottom-6 left-4 right-4 z-50 md:hidden">
+        <div class="bg-slate-900 shadow-2xl rounded-2xl p-2 flex gap-2 border border-white/10 backdrop-blur-xl">
+            <a href="tel:0934128702" class="flex-1 bg-blue-600 text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2">
+                <i class="fas fa-phone-alt"></i> <span data-vi="GỌI NGAY" data-en="CALL NOW">GỌI NGAY</span>
+            </a>
+            <a href="https://wa.me/84934128702" class="w-16 bg-green-500 text-white rounded-xl flex items-center justify-center">
+                <i class="fab fa-whatsapp text-2xl"></i>
+            </a>
+        </div>
     </div>
+
+    <script>
+        function changeLang(lang) {
+            document.querySelectorAll('.lang-flag').forEach(f => f.classList.remove('active'));
+            document.getElementById('flag-' + lang).classList.add('active');
+
+            const elements = document.querySelectorAll('[data-vi]');
+            elements.forEach(el => {
+                const translation = el.getAttribute('data-' + lang);
+                if (translation) el.innerText = translation;
+            });
+            document.documentElement.lang = lang;
+        }
+    </script>
 
 </body>
 </html>
