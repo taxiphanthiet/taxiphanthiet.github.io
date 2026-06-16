@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Agents – Tự Động Tạo & Đăng Video Kiếm Affiliate</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
+
+  :root {
+    --bg:        #0b0e14;
+    --surface:   #111520;
+    --border:    #1e2535;
+    --accent:    #00e5a0;
+    --accent2:   #6c63ff;
+    --accent3:   #ff6b35;
+    --text:      #cdd6f4;
+    --muted:     #6b7a99;
+    --heading:   #e8eaf6;
+    --tag-bg:    #1a2240;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(135deg, #0b0e14 0%, #0d1525 50%, #0b1a18 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 56px 24px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -80px; left: 50%; transform: translateX(-50%);
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(0,229,160,.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: .12em;
+    color: var(--accent);
+    background: rgba(0,229,160,.08);
+    border: 1px solid rgba(0,229,160,.2);
+    padding: 4px 12px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-size: clamp(24px, 5vw, 42px);
+    font-weight: 800;
+    color: var(--heading);
+    line-height: 1.2;
+    max-width: 720px;
+    margin: 0 auto 16px;
+  }
+  .hero h1 span { color: var(--accent); }
+  .hero p {
+    color: var(--muted);
+    max-width: 560px;
+    margin: 0 auto;
+    font-size: 14px;
+  }
+
+  /* ── NAV PILLS ── */
+  .nav-pills {
+    display: flex;
+    overflow-x: auto;
+    gap: 8px;
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--border);
+    scrollbar-width: none;
+  }
+  .nav-pills::-webkit-scrollbar { display: none; }
+  .pill {
+    white-space: nowrap;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    text-decoration: none;
+    transition: all .2s;
+    cursor: pointer;
+    background: var(--surface);
+  }
+  .pill:hover, .pill.active {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(0,229,160,.06);
+  }
+
+  /* ── LAYOUT ── */
+  .main { max-width: 900px; margin: 0 auto; padding: 32px 20px 80px; }
+
+  /* ── SECTION ── */
+  .section { margin-bottom: 48px; }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    background: rgba(0,229,160,.1);
+    border: 1px solid rgba(0,229,160,.2);
+    width: 32px; height: 32px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 6px;
+    flex-shrink: 0;
+    font-weight: 600;
+  }
+  .section-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--heading);
+  }
+  .section-sub {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  /* ── CARDS ── */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 14px;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px;
+    transition: border-color .2s;
+  }
+  .card:hover { border-color: #2d3655; }
+  .card-icon { font-size: 22px; margin-bottom: 10px; }
+  .card-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--heading);
+    margin-bottom: 4px;
+  }
+  .card-role {
+    font-size: 11px;
+    color: var(--accent);
+    font-family: 'JetBrains Mono', monospace;
+    margin-bottom: 8px;
+  }
+  .card-desc { font-size: 13px; color: var(--muted); }
+  .card-link {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 12px;
+    color: var(--accent2);
+    text-decoration: none;
+  }
+  .card-link:hover { text-decoration: underline; }
+
+  /* ── FLOW DIAGRAM ── */
+  .flow {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .flow-step {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    position: relative;
+  }
+  .flow-step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 19px; top: 40px;
+    width: 2px;
+    height: calc(100% - 8px);
+    background: linear-gradient(to bottom, var(--accent), var(--border));
+  }
+  .flow-dot {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: rgba(0,229,160,.1);
+    border: 2px solid var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-size: 16px;
+    z-index: 1;
+  }
+  .flow-body {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 18px;
+    flex: 1;
+    margin-bottom: 12px;
+  }
+  .flow-body h4 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--heading);
+    margin-bottom: 6px;
+  }
+  .flow-body p { font-size: 13px; color: var(--muted); }
+  .flow-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-family: 'JetBrains Mono', monospace;
+    background: var(--tag-bg);
+    color: var(--accent2);
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-top: 8px;
+    margin-right: 4px;
+  }
+
+  /* ── CODE BLOCK ── */
+  .code-block {
+    background: #080b11;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 16px 0;
+  }
+  .code-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--border);
+    background: #0d1120;
+  }
+  .code-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .code-lang {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    margin-left: auto;
+  }
+  .code-body {
+    padding: 18px 18px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px;
+    line-height: 1.8;
+    color: #a8b5d0;
+    overflow-x: auto;
+    white-space: pre;
+  }
+  .kw { color: #c792ea; }
+  .str { color: #c3e88d; }
+  .cmt { color: #546477; }
+  .fn { color: #82aaff; }
+  .num { color: #f78c6c; }
+  .var { color: #89ddff; }
+
+  /* ── PLATFORM BADGES ── */
+  .platform-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 12px 0;
+  }
+  .platform-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--heading);
+  }
+  .platform-badge .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+  }
+
+  /* ── TABLE ── */
+  .table-wrap { overflow-x: auto; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  th {
+    background: var(--surface);
+    color: var(--muted);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    text-align: left;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #151b2a;
+    color: var(--text);
+    vertical-align: top;
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #0f1420; }
+
+  /* ── CALLOUT ── */
+  .callout {
+    background: rgba(108,99,255,.07);
+    border: 1px solid rgba(108,99,255,.25);
+    border-left: 3px solid var(--accent2);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-size: 13px;
+  }
+  .callout.green {
+    background: rgba(0,229,160,.05);
+    border-color: rgba(0,229,160,.3);
+    border-left-color: var(--accent);
+  }
+  .callout.orange {
+    background: rgba(255,107,53,.05);
+    border-color: rgba(255,107,53,.25);
+    border-left-color: var(--accent3);
+  }
+  .callout strong { color: var(--heading); }
+
+  /* ── LIST ── */
+  .check-list { list-style: none; }
+  .check-list li {
+    display: flex;
+    gap: 10px;
+    padding: 6px 0;
+    font-size: 13px;
+    color: var(--text);
+    align-items: flex-start;
+  }
+  .check-list li::before {
+    content: '✓';
+    color: var(--accent);
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ── PHASE BADGE ── */
+  .phase {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: .08em;
+    padding: 3px 10px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  .phase-1 { background: rgba(0,229,160,.1); color: var(--accent); border: 1px solid rgba(0,229,160,.2); }
+  .phase-2 { background: rgba(108,99,255,.1); color: var(--accent2); border: 1px solid rgba(108,99,255,.2); }
+  .phase-3 { background: rgba(255,107,53,.1); color: var(--accent3); border: 1px solid rgba(255,107,53,.2); }
+
+  /* ── INCOME TABLE ── */
+  .income-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    border-radius: 8px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    margin-bottom: 8px;
+  }
+  .income-label { font-size: 13px; color: var(--muted); }
+  .income-value { font-size: 14px; font-weight: 700; color: var(--accent); font-family: 'JetBrains Mono', monospace; }
+
+  /* ── FOOTER ── */
+  .footer {
+    text-align: center;
+    padding: 32px 24px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 12px;
+  }
+
+  h3 { font-size: 15px; font-weight: 700; color: var(--heading); margin: 20px 0 10px; }
+  p { margin-bottom: 10px; }
+
+  @media (max-width: 600px) {
+    .card-grid { grid-template-columns: 1fr; }
+    .flow-step::after { left: 19px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">AI AGENT SYSTEM · 2025</div>
+  <h1>Tự Động Tạo Video Ngắn &<br><span>Kiếm Tiền Affiliate</span> Bằng AI</h1>
+  <p>Hướng dẫn xây dựng hệ thống AI agents hoàn chỉnh: tự tạo kịch bản, render video, lên lịch đăng đa nền tảng, gắn affiliate link — chạy 24/7 không cần can thiệp thủ công.</p>
+</div>
+
+<!-- NAV PILLS -->
+<div class="nav-pills">
+  <a class="pill active" href="#overview">Tổng quan</a>
+  <a class="pill" href="#tools">Bộ công cụ</a>
+  <a class="pill" href="#pipeline">Pipeline AI</a>
+  <a class="pill" href="#automation">Lên lịch tự động</a>
+  <a class="pill" href="#affiliate">Affiliate</a>
+  <a class="pill" href="#channel">Xây kênh</a>
+  <a class="pill" href="#code">Code mẫu</a>
+  <a class="pill" href="#roadmap">Lộ trình</a>
+</div>
+
+<div class="main">
+
+<!-- SECTION 1: TỔNG QUAN -->
+<div class="section" id="overview">
+  <div class="section-header">
+    <div class="section-num">01</div>
+    <div>
+      <div class="section-title">Tổng quan hệ thống</div>
+      <div class="section-sub">Kiến trúc AI agent pipeline từ đầu đến cuối</div>
+    </div>
+  </div>
+
+  <p>Hệ thống hoạt động theo mô hình <strong style="color:var(--heading)">Multi-Agent Pipeline</strong> — nhiều AI agents chuyên biệt phối hợp nhau, mỗi agent đảm nhận một nhiệm vụ cụ thể trong chuỗi sản xuất video tự động.</p>
+
+  <div class="flow" style="margin-top:24px;">
+    <div class="flow-step">
+      <div class="flow-dot">🧠</div>
+      <div class="flow-body">
+        <h4>Agent 1 — Content Planner</h4>
+        <p>Tìm trending topics, nghiên cứu từ khóa, lên kế hoạch nội dung 30 ngày. Tự động xác định sản phẩm affiliate phù hợp với từng chủ đề.</p>
+        <span class="flow-tag">Claude / GPT-4o</span>
+        <span class="flow-tag">Google Trends API</span>
+        <span class="flow-tag">n8n</span>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-dot">✍️</div>
+      <div class="flow-body">
+        <h4>Agent 2 — Script Writer</h4>
+        <p>Viết kịch bản video ngắn (30–60s) theo format hook → nội dung → CTA. Tối ưu cho từng nền tảng (TikTok, Reels, Shorts).</p>
+        <span class="flow-tag">Claude API</span>
+        <span class="flow-tag">Custom prompt template</span>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-dot">🎙️</div>
+      <div class="flow-body">
+        <h4>Agent 3 — Voice & Avatar</h4>
+        <p>Chuyển kịch bản thành giọng nói AI, đồng bộ với avatar ảo (lip-sync). Tạo nhân vật ảo bảo vệ danh tính thật.</p>
+        <span class="flow-tag">ElevenLabs</span>
+        <span class="flow-tag">HeyGen API</span>
+        <span class="flow-tag">D-ID</span>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-dot">🎬</div>
+      <div class="flow-body">
+        <h4>Agent 4 — Video Editor</h4>
+        <p>Ghép B-roll footage, thêm captions tự động, nhạc nền, hiệu ứng. Render video 9:16 chuẩn cho tất cả platforms.</p>
+        <span class="flow-tag">CapCut API / Remotion</span>
+        <span class="flow-tag">Creatomate</span>
+        <span class="flow-tag">Shotstack</span>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-dot">🔗</div>
+      <div class="flow-body">
+        <h4>Agent 5 — Affiliate Linker</h4>
+        <p>Tự động gắn affiliate link vào caption, bio, pinned comment. Theo dõi click và conversion theo từng video.</p>
+        <span class="flow-tag">Accesstrade API</span>
+        <span class="flow-tag">ClickBank</span>
+        <span class="flow-tag">Custom tracker</span>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-dot">📅</div>
+      <div class="flow-body">
+        <h4>Agent 6 — Publisher & Scheduler</h4>
+        <p>Tự động đăng video lên TikTok, Facebook, YouTube theo lịch tối ưu. A/B test tiêu đề, hashtag. Theo dõi performance.</p>
+        <span class="flow-tag">Buffer API</span>
+        <span class="flow-tag">TikTok API</span>
+        <span class="flow-tag">YouTube Data API</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 2: BỘ CÔNG CỤ -->
+<div class="section" id="tools">
+  <div class="section-header">
+    <div class="section-num">02</div>
+    <div>
+      <div class="section-title">Bộ công cụ cần thiết</div>
+      <div class="section-sub">Phân theo chức năng và chi phí</div>
+    </div>
+  </div>
+
+  <h3>🤖 AI & LLM (Kịch bản + Lập kế hoạch)</h3>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-icon">🧠</div>
+      <div class="card-name">Claude API (Anthropic)</div>
+      <div class="card-role">Script Writer · Planner</div>
+      <div class="card-desc">Tốt nhất cho kịch bản tiếng Việt, lên kế hoạch nội dung dài hạn. Free tier có sẵn.</div>
+      <a class="card-link" href="https://console.anthropic.com" target="_blank">→ console.anthropic.com</a>
+    </div>
+    <div class="card">
+      <div class="card-icon">💡</div>
+      <div class="card-name">OpenAI GPT-4o</div>
+      <div class="card-role">Fallback · Image Analysis</div>
+      <div class="card-desc">Dùng song song với Claude. Phân tích trend từ ảnh, tạo thumbnail concept.</div>
+      <a class="card-link" href="https://platform.openai.com" target="_blank">→ platform.openai.com</a>
+    </div>
+  </div>
+
+  <h3>🎙️ Voice & Avatar AI</h3>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-icon">🔊</div>
+      <div class="card-name">ElevenLabs</div>
+      <div class="card-role">Text-to-Speech</div>
+      <div class="card-desc">Giọng AI tự nhiên nhất, hỗ trợ tiếng Việt. Clone giọng riêng từ 1 phút audio. ~$5/tháng gói Creator.</div>
+      <a class="card-link" href="https://elevenlabs.io" target="_blank">→ elevenlabs.io</a>
+    </div>
+    <div class="card">
+      <div class="card-icon">🧑‍💻</div>
+      <div class="card-name">HeyGen</div>
+      <div class="card-role">AI Avatar · Lip-sync</div>
+      <div class="card-desc">Tạo avatar ảo lip-sync với audio. Dùng ảnh tĩnh hoặc video mẫu. Phù hợp ẩn danh.</div>
+      <a class="card-link" href="https://heygen.com" target="_blank">→ heygen.com</a>
+    </div>
+    <div class="card">
+      <div class="card-icon">🎭</div>
+      <div class="card-name">D-ID</div>
+      <div class="card-role">Talking Photo</div>
+      <div class="card-desc">API mạnh, giá rẻ hơn HeyGen. Tốt cho batch processing nhiều video/ngày.</div>
+      <a class="card-link" href="https://d-id.com" target="_blank">→ d-id.com</a>
+    </div>
+  </div>
+
+  <h3>🎬 Video Render & Edit</h3>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-icon">🎞️</div>
+      <div class="card-name">Creatomate</div>
+      <div class="card-role">API Video Renderer</div>
+      <div class="card-desc">Template-based video render qua API. Tích hợp dễ với n8n/Make. Chuẩn 9:16, captions tự động.</div>
+      <a class="card-link" href="https://creatomate.com" target="_blank">→ creatomate.com</a>
+    </div>
+    <div class="card">
+      <div class="card-icon">🎥</div>
+      <div class="card-name">Shotstack</div>
+      <div class="card-role">Cloud Video Editing API</div>
+      <div class="card-desc">Render video trên cloud, không cần máy tính mạnh. B-roll + text overlay + music tự động.</div>
+      <a class="card-link" href="https://shotstack.io" target="_blank">→ shotstack.io</a>
+    </div>
+    <div class="card">
+      <div class="card-icon">⚛️</div>
+      <div class="card-name">Remotion</div>
+      <div class="card-role">React-based Video</div>
+      <div class="card-desc">Code video bằng React. Full control, tự host. Tốt nhất nếu biết lập trình.</div>
+      <a class="card-link" href="https://remotion.dev" target="_blank">→ remotion.dev</a>
+    </div>
+  </div>
+
+  <h3>⚙️ Automation & Orchestration</h3>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-icon">🔄</div>
+      <div class="card-name">n8n</div>
+      <div class="card-role">Workflow Automation (Self-host)</div>
+      <div class="card-desc">Mã nguồn mở, self-host miễn phí. Kết nối tất cả tools bằng drag & drop. Cộng đồng Việt Nam lớn.</div>
+      <a class="card-link" href="https://n8n.io" target="_blank">→ n8n.io</a>
+    </div>
+    <div class="card">
+      <div class="card-icon">🔮</div>
+      <div class="card-name">Make (Integromat)</div>
+      <div class="card-role">No-code Automation</div>
+      <div class="card-desc">Dễ dùng hơn n8n, gói Free 1,000 ops/tháng. Tốt để test pipeline trước khi scale.</div>
+      <a class="card-link" href="https://make.com" target="_blank">→ make.com</a>
+    </div>
+    <div class="card">
+      <div class="card-icon">🐍</div>
+      <div class="card-name">Python + Celery</div>
+      <div class="card-role">Custom Agent Code</div>
+      <div class="card-desc">Full control, không giới hạn. Kết hợp với Redis queue. Cần kỹ năng lập trình.</div>
+    </div>
+  </div>
+
+  <h3>📤 Publishing & Scheduling</h3>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-icon">📱</div>
+      <div class="card-name">Buffer</div>
+      <div class="card-role">Multi-platform Scheduler</div>
+      <div class="card-desc">API mạnh, hỗ trợ TikTok + Facebook + YouTube. Gói Essentials ~$6/tháng.</div>
+      <a class="card-link" href="https://buffer.com" target="_blank">→ buffer.com</a>
+    </div>
+    <div class="card">
+      <div class="card-icon">📊</div>
+      <div class="card-name">Publer</div>
+      <div class="card-role">Social Media Scheduler</div>
+      <div class="card-desc">Hỗ trợ nhiều nền tảng hơn Buffer, có bulk upload video. Tốt cho quản lý nhiều kênh.</div>
+      <a class="card-link" href="https://publer.io" target="_blank">→ publer.io</a>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 3: PIPELINE CHI TIẾT -->
+<div class="section" id="pipeline">
+  <div class="section-header">
+    <div class="section-num">03</div>
+    <div>
+      <div class="section-title">Pipeline AI Agent chi tiết</div>
+      <div class="section-sub">Từng bước từ idea đến video hoàn chỉnh</div>
+    </div>
+  </div>
+
+  <div class="callout green">
+    <strong>Mục tiêu:</strong> Mỗi ngày hệ thống tự động tạo 3–5 video ngắn (TikTok/Reels/Shorts) liên quan đến chủ đề kênh, kèm affiliate link, đăng theo lịch giờ vàng — không cần can thiệp thủ công hàng ngày.
+  </div>
+
+  <h3>Bước 1 — Tìm trending topics & chọn sản phẩm affiliate</h3>
+  <p>Agent đầu tiên chạy mỗi sáng 6:00 AM tự động:</p>
+  <ul class="check-list">
+    <li>Gọi Google Trends API lấy top trending trong ngành (ví dụ: du lịch, lifestyle, công nghệ)</li>
+    <li>Crawl top 10 TikTok/Reels đang viral trong niche bằng Apify hoặc Phantombuster</li>
+    <li>Dùng Claude API phân tích, chọn 5 chủ đề phù hợp với kênh và có affiliate product liên quan</li>
+    <li>Tạo content calendar cho ngày hôm đó, lưu vào Google Sheet hoặc Airtable</li>
+  </ul>
+
+  <div class="code-block">
+    <div class="code-header">
+      <div class="code-dot" style="background:#ff5f56"></div>
+      <div class="code-dot" style="background:#ffbd2e"></div>
+      <div class="code-dot" style="background:#27c93f"></div>
+      <span class="code-lang">n8n Workflow · Content Planner Agent</span>
+    </div>
+    <div class="code-body"><span class="cmt">// Node 1: Schedule Trigger — chạy lúc 6:00 AM mỗi ngày</span>
+<span class="kw">Trigger</span>: Cron <span class="str">"0 6 * * *"</span>
+
+<span class="cmt">// Node 2: Gọi Google Trends (qua SerpAPI)</span>
+<span class="fn">HTTP Request</span> → GET https://serpapi.com/search
+  params: { engine: <span class="str">"google_trends"</span>, q: <span class="str">"du lich phan thiet,mũi né"</span> }
+
+<span class="cmt">// Node 3: Claude API phân tích và tạo kế hoạch</span>
+<span class="fn">HTTP Request</span> → POST https://api.anthropic.com/v1/messages
+  body: {
+    model: <span class="str">"claude-sonnet-4-20250514"</span>,
+    messages: [{
+      role: <span class="str">"user"</span>,
+      content: <span class="str">"Dựa trên trending topics này: {{$json.trends}}
+Tạo 5 ý tưởng video ngắn 45 giây cho kênh lifestyle/du lịch.
+Mỗi ý tưởng bao gồm: tiêu đề, hook mở đầu, sản phẩm affiliate phù hợp.
+Format JSON."</span>
+    }]
+  }
+
+<span class="cmt">// Node 4: Lưu vào Google Sheet</span>
+<span class="fn">Google Sheets</span> → Append rows với data từ Claude</div>
+  </div>
+
+  <h3>Bước 2 — Viết kịch bản tối ưu</h3>
+  <p>Prompt structure cho Script Writer Agent:</p>
+
+  <div class="code-block">
+    <div class="code-header">
+      <div class="code-dot" style="background:#ff5f56"></div>
+      <div class="code-dot" style="background:#ffbd2e"></div>
+      <div class="code-dot" style="background:#27c93f"></div>
+      <span class="code-lang">Claude System Prompt · Script Writer</span>
+    </div>
+    <div class="code-body"><span class="kw">SYSTEM:</span>
+<span class="str">Bạn là chuyên gia viết kịch bản video ngắn viral cho TikTok/Reels/Shorts.
+Luôn viết bằng tiếng Việt. Phong cách: gần gũi, tự nhiên, như người bạn kể chuyện.
+
+Cấu trúc bắt buộc (45–60 giây đọc):
+1. HOOK (3–5 giây): Câu mở gây tò mò hoặc shock
+2. BRIDGE (5 giây): Kết nối hook với nội dung chính  
+3. VALUE (30–40 giây): Nội dung hữu ích, dễ nhớ
+4. CTA (5–7 giây): Kêu gọi hành động + mention sản phẩm affiliate tự nhiên
+
+Sau kịch bản, thêm:
+- CAPTION: 150 ký tự + hashtags
+- AFFILIATE_NOTE: Cách gắn link tự nhiên vào caption</span>
+
+<span class="kw">USER:</span>
+Chủ đề: <span class="var">{{topic}}</span>
+Sản phẩm affiliate: <span class="var">{{product_name}}</span> - <span class="var">{{product_link}}</span>
+Nền tảng đăng: <span class="var">{{platform}}</span></div>
+  </div>
+
+  <h3>Bước 3 — Tạo giọng đọc + Avatar</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Công cụ</th>
+          <th>Input</th>
+          <th>Output</th>
+          <th>API Call</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>ElevenLabs</strong></td>
+          <td>Text kịch bản</td>
+          <td>File .mp3 giọng AI</td>
+          <td>POST /v1/text-to-speech/{voice_id}</td>
+        </tr>
+        <tr>
+          <td><strong>HeyGen</strong></td>
+          <td>Audio + Avatar ID</td>
+          <td>Video lip-sync .mp4</td>
+          <td>POST /v2/video/generate</td>
+        </tr>
+        <tr>
+          <td><strong>D-ID</strong></td>
+          <td>Audio + Ảnh avatar</td>
+          <td>Talking photo video</td>
+          <td>POST /talks</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Bước 4 — Render video hoàn chỉnh với Creatomate</h3>
+  <div class="code-block">
+    <div class="code-header">
+      <div class="code-dot" style="background:#ff5f56"></div>
+      <div class="code-dot" style="background:#ffbd2e"></div>
+      <div class="code-dot" style="background:#27c93f"></div>
+      <span class="code-lang">Creatomate API · Video Render</span>
+    </div>
+    <div class="code-body"><span class="fn">POST</span> https://api.creatomate.com/v1/renders
+Authorization: Bearer <span class="var">YOUR_API_KEY</span>
+
+{
+  <span class="str">"template_id"</span>: <span class="str">"your-9x16-template-id"</span>,
+  <span class="str">"modifications"</span>: {
+    <span class="str">"avatar_video"</span>: <span class="str">"{{heygen_output_url}}"</span>,
+    <span class="str">"background_music"</span>: <span class="str">"{{music_url}}"</span>,
+    <span class="str">"caption_text"</span>: <span class="str">"{{auto_caption}}"</span>,
+    <span class="str">"logo_overlay"</span>: <span class="str">"{{channel_logo_url}}"</span>,
+    <span class="str">"cta_text"</span>: <span class="str">"Link trong bio 👆"</span>
+  }
+}
+
+<span class="cmt">// Response trả về render_id
+// Polling để lấy output URL khi hoàn thành</span>
+<span class="fn">GET</span> https://api.creatomate.com/v1/renders/<span class="var">{render_id}</span></div>
+  </div>
+</div>
+
+<!-- SECTION 4: LÊN LỊCH TỰ ĐỘNG -->
+<div class="section" id="automation">
+  <div class="section-header">
+    <div class="section-num">04</div>
+    <div>
+      <div class="section-title">Lên lịch & đăng tự động</div>
+      <div class="section-sub">Đăng đúng giờ vàng trên từng nền tảng</div>
+    </div>
+  </div>
+
+  <h3>Giờ vàng đăng bài (Việt Nam timezone)</h3>
+  <div class="platform-row">
+    <div class="platform-badge"><div class="dot" style="background:#fe2c55"></div> TikTok: 19:00 – 21:00</div>
+    <div class="platform-badge"><div class="dot" style="background:#0866ff"></div> Facebook: 11:00 – 13:00 & 19:00 – 21:00</div>
+    <div class="platform-badge"><div class="dot" style="background:#ff0000"></div> YouTube: 20:00 – 22:00</div>
+    <div class="platform-badge"><div class="dot" style="background:#e1306c"></div> Instagram: 12:00 – 14:00 & 18:00 – 20:00</div>
+  </div>
+
+  <h3>Workflow đăng đa nền tảng bằng n8n</h3>
+  <div class="code-block">
+    <div class="code-header">
+      <div class="code-dot" style="background:#ff5f56"></div>
+      <div class="code-dot" style="background:#ffbd2e"></div>
+      <div class="code-dot" style="background:#27c93f"></div>
+      <span class="code-lang">n8n Workflow · Multi-Platform Publisher</span>
+    </div>
+    <div class="code-body"><span class="cmt">// Trigger: Webhook nhận video đã render xong từ Creatomate</span>
+<span class="kw">Webhook</span> → POST /video-ready
+
+<span class="cmt">// Bước 1: Upload lên Google Drive / S3 làm CDN</span>
+<span class="fn">Google Drive</span> → Upload file video
+  → lấy public URL
+
+<span class="cmt">// Bước 2: Gắn affiliate link vào caption</span>
+caption = script_caption + <span class="str">"\n\n🔗 Link sản phẩm: "</span> + affiliate_link
+         + <span class="str">"\n\n#dulich #muine #phanthiet #lifestyle"</span>
+
+<span class="cmt">// Bước 3: Schedule đăng TikTok qua Buffer API</span>
+<span class="fn">HTTP Request</span> → POST https://api.bufferapp.com/1/updates/create
+  body: {
+    profile_ids: [<span class="str">"tiktok_profile_id"</span>],
+    text: caption,
+    media: { video: video_url },
+    scheduled_at: <span class="str">"2025-06-10T12:00:00+07:00"</span>
+  }
+
+<span class="cmt">// Bước 4: Schedule Facebook Reels</span>
+<span class="fn">Facebook Graph API</span> → POST /{page_id}/videos
+  params: {
+    description: caption,
+    file_url: video_url,
+    published: <span class="kw">false</span>,
+    scheduled_publish_time: unix_timestamp
+  }
+
+<span class="cmt">// Bước 5: Upload YouTube Shorts</span>
+<span class="fn">YouTube Data API</span> → POST /youtube/v3/videos
+  part: <span class="str">"snippet,status"</span>
+  snippet.title: video_title
+  snippet.description: caption + affiliate_link
+  status.publishAt: schedule_time</div>
+  </div>
+
+  <div class="callout orange">
+    <strong>⚠️ Lưu ý API chính thức:</strong> TikTok Content Posting API yêu cầu business account và review. Ngoài ra có thể dùng <strong>Phantombuster</strong> hoặc <strong>Publer</strong> như trung gian để tránh phức tạp OAuth.
+  </div>
+
+  <h3>Tối ưu A/B testing tự động</h3>
+  <ul class="check-list">
+    <li>Tạo 2 phiên bản caption khác nhau bằng Claude (A: emotional, B: informational)</li>
+    <li>Đăng phiên bản A lúc 19:00, phiên bản B lúc 20:30</li>
+    <li>Sau 24h: agent đọc analytics, so sánh view/engagement</li>
+    <li>Lưu pattern thắng vào database để prompt lần sau</li>
+  </ul>
+</div>
+
+<!-- SECTION 5: AFFILIATE -->
+<div class="section" id="affiliate">
+  <div class="section-header">
+    <div class="section-num">05</div>
+    <div>
+      <div class="section-title">Chiến lược Affiliate tự động</div>
+      <div class="section-sub">Gắn link thông minh, theo dõi conversion</div>
+    </div>
+  </div>
+
+  <h3>Mạng affiliate phù hợp với kênh lifestyle/du lịch VN</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Mạng affiliate</th><th>Ngành phù hợp</th><th>Hoa hồng</th><th>Cookie</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Accesstrade</strong></td><td>Lazada, Shopee, Agoda, Booking</td><td>3–12%</td><td>30 ngày</td></tr>
+        <tr><td><strong>Shopee Affiliate</strong></td><td>Tất cả ngành</td><td>3–10%</td><td>3 ngày</td></tr>
+        <tr><td><strong>Lazada Affiliate</strong></td><td>Tất cả ngành</td><td>4–9%</td><td>7 ngày</td></tr>
+        <tr><td><strong>Booking.com</strong></td><td>Du lịch, khách sạn</td><td>25–40% commission</td><td>30 ngày</td></tr>
+        <tr><td><strong>Klook</strong></td><td>Tour, vé tham quan</td><td>5%</td><td>30 ngày</td></tr>
+        <tr><td><strong>ClickBank</strong></td><td>Khóa học online, digital</td><td>50–75%</td><td>60 ngày</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Cách gắn affiliate link không bị block</h3>
+  <ul class="check-list">
+    <li><strong>Linktree / bio.link:</strong> Tập hợp tất cả link tại 1 URL duy nhất, đặt trong bio. Agent tự cập nhật khi có sản phẩm mới.</li>
+    <li><strong>Comment ghim:</strong> YouTube + Facebook cho phép ghim comment có link. Agent tự post comment sau khi video up.</li>
+    <li><strong>Caption tự nhiên:</strong> Claude viết câu CTA không spam: "Mình mua ở link dưới comment nè" thay vì "CLICK NOW".</li>
+    <li><strong>URL shortener riêng:</strong> Dùng yourls.org self-host để track click riêng, tránh bị filter.</li>
+    <li><strong>Story/Swipe-up:</strong> Facebook/Instagram Stories với link trực tiếp khi đủ follower.</li>
+  </ul>
+
+  <h3>Hệ thống tracking conversion tự động</h3>
+  <div class="code-block">
+    <div class="code-header">
+      <div class="code-dot" style="background:#ff5f56"></div>
+      <div class="code-dot" style="background:#ffbd2e"></div>
+      <div class="code-dot" style="background:#27c93f"></div>
+      <span class="code-lang">Google Sheet · Affiliate Dashboard (tự động cập nhật)</span>
+    </div>
+    <div class="code-body">Cột: Video_ID | Platform | Post_Date | Views | Clicks | Conversions | Revenue
+
+<span class="cmt">// n8n workflow chạy mỗi ngày 7:00 AM</span>
+<span class="num">1.</span> Pull data từ YouTube Analytics API → views, watch_time
+<span class="num">2.</span> Pull data từ Facebook Insights API → reach, engagement  
+<span class="num">3.</span> Pull data từ Accesstrade API → clicks, conversions, revenue
+<span class="num">4.</span> Merge theo video_id → update Google Sheet
+<span class="num">5.</span> Claude phân tích: "Video nào ROI cao nhất tuần này?"
+<span class="num">6.</span> Gửi summary qua Telegram bot</div>
+  </div>
+</div>
+
+<!-- SECTION 6: XÂY KÊNH -->
+<div class="section" id="channel">
+  <div class="section-header">
+    <div class="section-num">06</div>
+    <div>
+      <div class="section-title">Chiến lược xây kênh tự động</div>
+      <div class="section-sub">Từ 0 đến kênh có thu nhập ổn định</div>
+    </div>
+  </div>
+
+  <div class="phase phase-1">GIAI ĐOẠN 1 · Ngày 1–30</div>
+  <div class="card" style="margin-bottom:16px;">
+    <div class="card-name">Xây nền tảng</div>
+    <ul class="check-list" style="margin-top:8px;">
+      <li>Chọn 1 niche duy nhất — đừng làm tất cả (ví dụ: "Du lịch Phan Thiết giá rẻ")</li>
+      <li>Tạo avatar AI nhất quán (tên, giọng nói, phong cách visual)</li>
+      <li>Setup pipeline n8n + test toàn bộ flow với 5 video đầu thủ công</li>
+      <li>Đăng đều đặn 1 video/ngày, không bỏ ngày nào trong tháng đầu</li>
+      <li>Mục tiêu: 500 followers TikTok (điều kiện bật TikTok Shop/link)</li>
+    </ul>
+  </div>
+
+  <div class="phase phase-2">GIAI ĐOẠN 2 · Ngày 31–90</div>
+  <div class="card" style="margin-bottom:16px;">
+    <div class="card-name">Scale nội dung</div>
+    <ul class="check-list" style="margin-top:8px;">
+      <li>Tăng lên 2–3 video/ngày bằng cách chạy pipeline song song</li>
+      <li>Thêm kênh thứ 2 (Facebook Page) cùng nội dung, chỉ re-purpose</li>
+      <li>Bật affiliate cho top 3 sản phẩm liên quan niche</li>
+      <li>A/B test format: hook dạng câu hỏi vs câu statement</li>
+      <li>Mục tiêu: 1 video viral/tuần (>10K views), 2,000 followers</li>
+    </ul>
+  </div>
+
+  <div class="phase phase-3">GIAI ĐOẠN 3 · Tháng 4–6</div>
+  <div class="card" style="margin-bottom:16px;">
+    <div class="card-name">Monetize & mở rộng</div>
+    <ul class="check-list" style="margin-top:8px;">
+      <li>Đăng ký TikTok Creator Fund / YouTube Partner Program</li>
+      <li>Mở thêm 2–3 kênh niche phụ (agent tự tái sử dụng pipeline)</li>
+      <li>Thêm sản phẩm digital affiliate (khóa học, ebook) — hoa hồng cao hơn</li>
+      <li>Xây email list từ traffic video — dài hạn nhất</li>
+      <li>Mục tiêu: $200–500/tháng từ affiliate + ads</li>
+    </ul>
+  </div>
+</div>
+
+<!-- SECTION 7: CODE MẪU -->
+<div class="section" id="code">
+  <div class="section-header">
+    <div class="section-num">07</div>
+    <div>
+      <div class="section-title">Code mẫu Python Agent</div>
+      <div class="section-sub">Chạy toàn bộ pipeline từ 1 script</div>
+    </div>
+  </div>
+
+  <div class="code-block">
+    <div class="code-header">
+      <div class="code-dot" style="background:#ff5f56"></div>
+      <div class="code-dot" style="background:#ffbd2e"></div>
+      <div class="code-dot" style="background:#27c93f"></div>
+      <span class="code-lang">video_agent.py · Full Pipeline</span>
+    </div>
+    <div class="code-body"><span class="kw">import</span> anthropic, requests, json
+<span class="kw">from</span> datetime <span class="kw">import</span> datetime, timedelta
+
+<span class="cmt"># ─── Config ───────────────────────────────────────────</span>
+CLAUDE_KEY      = <span class="str">"sk-ant-..."</span>
+ELEVENLABS_KEY  = <span class="str">"..."</span>
+HEYGEN_KEY      = <span class="str">"..."</span>
+CREATOMATE_KEY  = <span class="str">"..."</span>
+BUFFER_TOKEN    = <span class="str">"..."</span>
+VOICE_ID        = <span class="str">"vietnamese_voice_id"</span>
+AVATAR_ID       = <span class="str">"your_heygen_avatar_id"</span>
+AFFILIATE_LINK  = <span class="str">"https://accesstrade.vn/go/..."</span>
+
+<span class="cmt"># ─── Step 1: Viết kịch bản ────────────────────────────</span>
+<span class="kw">def</span> <span class="fn">generate_script</span>(topic: str, product: str) -> dict:
+    client = anthropic.Anthropic(api_key=CLAUDE_KEY)
+    response = client.messages.create(
+        model=<span class="str">"claude-sonnet-4-20250514"</span>,
+        max_tokens=<span class="num">1000</span>,
+        messages=[{
+            <span class="str">"role"</span>: <span class="str">"user"</span>,
+            <span class="str">"content"</span>: <span class="str">f"""Viết kịch bản video TikTok 45 giây về: {topic}
+Sản phẩm mention: {product}
+Trả về JSON: {{script, caption, hashtags, cta}}"</span>
+        }]
+    )
+    <span class="kw">return</span> json.loads(response.content[<span class="num">0</span>].text)
+
+<span class="cmt"># ─── Step 2: Text-to-Speech ───────────────────────────</span>
+<span class="kw">def</span> <span class="fn">text_to_speech</span>(text: str) -> str:
+    url = <span class="str">f"https://api.elevenlabs.io/v1/text-to-speech/{VOICE_ID}"</span>
+    headers = {<span class="str">"xi-api-key"</span>: ELEVENLABS_KEY, <span class="str">"Content-Type"</span>: <span class="str">"application/json"</span>}
+    res = requests.post(url, headers=headers,
+        json={<span class="str">"text"</span>: text, <span class="str">"model_id"</span>: <span class="str">"eleven_multilingual_v2"</span>})
+    <span class="cmt"># Upload audio lên S3 / Google Drive, return URL</span>
+    <span class="kw">return</span> <span class="fn">upload_to_storage</span>(res.content, <span class="str">"audio.mp3"</span>)
+
+<span class="cmt"># ─── Step 3: Tạo Avatar Video (HeyGen) ───────────────</span>
+<span class="kw">def</span> <span class="fn">create_avatar_video</span>(audio_url: str) -> str:
+    res = requests.post(<span class="str">"https://api.heygen.com/v2/video/generate"</span>,
+        headers={<span class="str">"X-Api-Key"</span>: HEYGEN_KEY},
+        json={
+            <span class="str">"video_inputs"</span>: [{
+                <span class="str">"character"</span>: {<span class="str">"type"</span>: <span class="str">"avatar"</span>, <span class="str">"avatar_id"</span>: AVATAR_ID},
+                <span class="str">"voice"</span>: {<span class="str">"type"</span>: <span class="str">"audio"</span>, <span class="str">"audio_url"</span>: audio_url}
+            }],
+            <span class="str">"dimension"</span>: {<span class="str">"width"</span>: <span class="num">720</span>, <span class="str">"height"</span>: <span class="num">1280</span>}
+        })
+    video_id = res.json()[<span class="str">"data"</span>][<span class="str">"video_id"</span>]
+    <span class="kw">return</span> <span class="fn">poll_heygen</span>(video_id)  <span class="cmt"># đợi render xong, return URL</span>
+
+<span class="cmt"># ─── Step 4: Render final video (Creatomate) ─────────</span>
+<span class="kw">def</span> <span class="fn">render_video</span>(avatar_url: str, caption: str) -> str:
+    res = requests.post(<span class="str">"https://api.creatomate.com/v1/renders"</span>,
+        headers={<span class="str">"Authorization"</span>: <span class="str">f"Bearer {CREATOMATE_KEY}"</span>},
+        json={
+            <span class="str">"template_id"</span>: <span class="str">"your-template-id"</span>,
+            <span class="str">"modifications"</span>: {
+                <span class="str">"avatar_clip"</span>: avatar_url,
+                <span class="str">"subtitle_text"</span>: caption[:50]
+            }
+        })
+    render_id = res.json()[<span class="str">"id"</span>]
+    <span class="kw">return</span> <span class="fn">poll_creatomate</span>(render_id)
+
+<span class="cmt"># ─── Step 5: Schedule đăng (Buffer) ──────────────────</span>
+<span class="kw">def</span> <span class="fn">schedule_post</span>(video_url: str, caption: str, platform_id: str):
+    post_time = <span class="fn">get_golden_hour</span>()  <span class="cmt"># tính giờ vàng ngày hôm sau</span>
+    full_caption = caption + <span class="str">f"\n\n🔗 Link: {AFFILIATE_LINK}"</span>
+    requests.post(<span class="str">"https://api.bufferapp.com/1/updates/create.json"</span>,
+        headers={<span class="str">"Authorization"</span>: <span class="str">f"Bearer {BUFFER_TOKEN}"</span>},
+        json={
+            <span class="str">"profile_ids"</span>: [platform_id],
+            <span class="str">"text"</span>: full_caption,
+            <span class="str">"media"</span>: {<span class="str">"video"</span>: video_url},
+            <span class="str">"scheduled_at"</span>: post_time.isoformat()
+        })
+
+<span class="cmt"># ─── Main orchestrator ────────────────────────────────</span>
+<span class="kw">def</span> <span class="fn">run_pipeline</span>(topic: str, product: str):
+    <span class="fn">print</span>(<span class="str">f"🚀 Bắt đầu tạo video: {topic}"</span>)
+    data       = <span class="fn">generate_script</span>(topic, product)
+    audio_url  = <span class="fn">text_to_speech</span>(data[<span class="str">"script"</span>])
+    avatar_url = <span class="fn">create_avatar_video</span>(audio_url)
+    video_url  = <span class="fn">render_video</span>(avatar_url, data[<span class="str">"caption"</span>])
+    <span class="fn">schedule_post</span>(video_url, data[<span class="str">"caption"</span>], <span class="str">"tiktok_profile_id"</span>)
+    <span class="fn">schedule_post</span>(video_url, data[<span class="str">"caption"</span>], <span class="str">"facebook_profile_id"</span>)
+    <span class="fn">print</span>(<span class="str">"✅ Video đã được lên lịch đăng!"</span>)
+
+<span class="cmt"># Chạy</span>
+<span class="fn">run_pipeline</span>(<span class="str">"Top 5 quán ăn ngon ở Phan Thiết"</span>, <span class="str">"Tour Mũi Né Klook"</span>)</div>
+  </div>
+</div>
+
+<!-- SECTION 8: LỘ TRÌNH -->
+<div class="section" id="roadmap">
+  <div class="section-header">
+    <div class="section-num">08</div>
+    <div>
+      <div class="section-title">Lộ trình & chi phí ước tính</div>
+      <div class="section-sub">Bắt đầu với ngân sách tối thiểu</div>
+    </div>
+  </div>
+
+  <h3>Chi phí vận hành hàng tháng (3 video/ngày)</h3>
+  <div class="income-row"><span class="income-label">Claude API (Sonnet) — ~90 calls/ngày</span><span class="income-value">~$15/tháng</span></div>
+  <div class="income-row"><span class="income-label">ElevenLabs Creator</span><span class="income-value">~$5/tháng</span></div>
+  <div class="income-row"><span class="income-label">HeyGen Creator (60 phút video)</span><span class="income-value">~$29/tháng</span></div>
+  <div class="income-row"><span class="income-label">Creatomate Starter (250 renders)</span><span class="income-value">~$19/tháng</span></div>
+  <div class="income-row"><span class="income-label">Buffer Essentials (3 kênh)</span><span class="income-value">~$6/tháng</span></div>
+  <div class="income-row"><span class="income-label">n8n Cloud (self-host = FREE)</span><span class="income-value">$0–$20/tháng</span></div>
+  <div style="border-top:1px solid var(--border);margin:16px 0;padding-top:12px;">
+    <div class="income-row" style="border-color:var(--accent)"><span class="income-label" style="color:var(--heading);font-weight:700;">Tổng chi phí</span><span class="income-value" style="font-size:18px;">~$74–94/tháng</span></div>
+  </div>
+
+  <div class="callout green">
+    <strong>💰 Break-even:</strong> Chỉ cần 1–2 sale affiliate/ngày ($30–50 hoa hồng/ngày) là đủ bù chi phí. Với kênh 5K+ followers và content phù hợp, con số này hoàn toàn khả thi từ tháng thứ 2–3.
+  </div>
+
+  <h3>Stack tối thiểu để bắt đầu (tuần 1)</h3>
+  <ul class="check-list">
+    <li><strong>Miễn phí:</strong> n8n self-host trên máy tính, Claude free tier, Make.com free tier</li>
+    <li><strong>Bước đầu:</strong> Làm thủ công kịch bản + ElevenLabs ($5) + D-ID free tier</li>
+    <li><strong>Test pipeline</strong> với 10 video đầu trước khi đầu tư tool trả phí</li>
+    <li><strong>Chỉ scale</strong> khi thấy 1–2 video bắt đầu có tương tác thật</li>
+  </ul>
+
+  <h3>Công cụ thay thế miễn phí</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Tool trả phí</th><th>Thay thế miễn phí</th><th>Hạn chế</th></tr></thead>
+      <tbody>
+        <tr><td>HeyGen ($29)</td><td>D-ID free (5 video/tháng)</td><td>Giới hạn số lượng</td></tr>
+        <tr><td>ElevenLabs ($5)</td><td>Google TTS (qua API)</td><td>Giọng kém tự nhiên hơn</td></tr>
+        <tr><td>Creatomate ($19)</td><td>CapCut Web (thủ công)</td><td>Không có API</td></tr>
+        <tr><td>Buffer ($6)</td><td>Meta Creator Studio (free)</td><td>Chỉ Facebook/Instagram</td></tr>
+        <tr><td>Claude API ($15)</td><td>Claude.ai free tier</td><td>Rate limit, không tự động</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout">
+    <strong>🎯 Lời khuyên cuối:</strong> Đừng cố build toàn bộ pipeline ngay từ đầu. Tuần 1: viết kịch bản thủ công + test ElevenLabs. Tuần 2: kết nối n8n. Tuần 3: thêm HeyGen. Tuần 4: thêm Creatomate. Mỗi tuần chỉ thêm 1 mảnh. Pipeline hoàn chỉnh sau 4–6 tuần, nhưng kênh đã được xây từ ngày đầu.
+  </div>
+</div>
+
+</div><!-- /main -->
+
+<div class="footer">
+  Hệ thống AI Agent · Tạo & đăng video tự động · Phiên bản 2025<br>
+  <span style="color:#2d3655">Được tạo cho Duy Phương — Phan Thiết, Bình Thuận</span>
+</div>
+
+</body>
+</html>
